@@ -12,6 +12,9 @@ requestes = "*"
 python-decouple = "*"
 pytest-django = "*"
 requests = "*"
+gunicorn = "*"
+dj-database-url = "*"
+psycopg2 = "*"
 
 [dev-packages]
 ipython = "*"

@@ -1,0 +1,1 @@
+web: gunicorn superbol_api.wsgi --log-file -
