@@ -95,8 +95,10 @@ WSGI_APPLICATION = 'superbol_api.wsgi.application'
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db14.sqlite3')
 
-DATABASES = {'default': config('DATABASE_URL', default=default_dburl,
-             cast=dburl), }
+
+DATABASES = {'default': config('DATABASE_URL', default=default_dburl, cast=parse_database), }
+
+            
 
 
 
