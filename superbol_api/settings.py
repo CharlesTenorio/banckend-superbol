@@ -3,7 +3,7 @@ from functools import partial
 from pathlib import Path
 from decouple import config
 import os
-
+from dj_database_url import parse as dburl
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -94,10 +94,7 @@ WSGI_APPLICATION = 'superbol_api.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db14.sqlite3')
-
-
-DATABASES = {'default': config('DATABASE_URL', default=default_dburl, cast=parse_database), }
-
+DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
             
 
 
