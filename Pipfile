@@ -15,6 +15,7 @@ requests = "*"
 gunicorn = "*"
 dj-database-url = "*"
 psycopg2 = "*"
+django-s3-folder-storage = "*"
 
 [dev-packages]
 ipython = "*"
