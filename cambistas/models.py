@@ -14,6 +14,7 @@ class Cambista(models.Model):
     cpf= models.CharField(max_length=20, unique=True)
     sexo = models.CharField(max_length=15)
     nascimento = models.DateField()
+    celular = models.CharField(max_length=20, default='0')
     cep = models.CharField("CEP *", max_length=10)
     logradouro = models.CharField("Logradouro *", max_length=80)
     numero = models.CharField("Número *", max_length=5)
