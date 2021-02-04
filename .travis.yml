@@ -1,0 +1,13 @@
+language: python
+python:
+ - 3.9
+
+ env:
+  global:
+   - PIPENV_ENV_IN_PROJECT=1
+   - PIPENV_IGNORE_VIRTUALENVS=1
+
+   install:
+    - pip install -q pipenv codecov
+    - pipenv sync
+    - pytest superbol_api
