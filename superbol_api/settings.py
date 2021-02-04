@@ -38,17 +38,18 @@ JOGOS_APPS = [
              'jogos',
              'times',
              'ligas',
+             'home'
             
             ]
 
 
 DEFAULT_APPS = [
+   
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'collectfast',
     'django.contrib.staticfiles',
 ]
 
@@ -59,6 +60,8 @@ INSTALLED_APPS = (
     DEFAULT_APPS + LIB_APPS + JOGOS_APPS
     
 )
+
+X_FRAME_OPTIONS='SAMEORIGIN' 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,7 +78,7 @@ ROOT_URLCONF = 'superbol_api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -226,6 +229,9 @@ if  AWS_ACCESS_KEY_ID:
     INSTALLED_APPS.append('storages')
 
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 
 

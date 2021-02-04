@@ -16,7 +16,6 @@ gunicorn = "*"
 dj-database-url = "*"
 psycopg2 = "*"
 django-s3-folder-storage = "*"
-collectfast = "*"
 
 [dev-packages]
 ipython = "*"
