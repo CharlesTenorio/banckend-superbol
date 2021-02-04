@@ -1,8 +1,7 @@
 language: python
 python:
  - 3.9
-
- env:
+env:
   global:
    - PIPENV_ENV_IN_PROJECT=1
    - PIPENV_IGNORE_VIRTUALENVS=1
