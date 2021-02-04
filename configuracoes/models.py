@@ -33,7 +33,9 @@ class Configuracao(models.Model):
     val_max_contacoes = models.DecimalField(verbose_name='Valor Máximo para Cotações', max_digits=9, decimal_places=2)
     comissao_padrao = models.DecimalField(verbose_name='Comissão padrão (%):', max_digits=9, decimal_places=2)
     comissao_padrao_ao_vivo = models.DecimalField(verbose_name='Comissão padrão ao vivo (%):', max_digits=9, decimal_places=2)
-    logo_banca = models.ImageField(null=True, )
+    logo_banca = models.ImageField(null=True, blank=True)
+    nome_url = models.CharField(max_length=20, default='banca')
+
 
     def __str__(self):
             return self.id_banca
