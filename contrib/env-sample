@@ -1,4 +1,4 @@
-DEBUG=True
 DATABASE_URL=postgres://postgres:postgres@localhost/testdb
+API_TOKEN=74409-ok98vsO3htGHPn
 BASE_URL_V1=https://api.b365api.com/v1/
 BASE_URL_V2=https://api.b365api.com/v2/
