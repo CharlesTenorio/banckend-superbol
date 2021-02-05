@@ -1,0 +1,3 @@
+SECRET_KEY=0xqj4aojsoqf+7el+7%cq4jyi-4dwiie&l6f@@1jh!5mnl95yf
+DEBUG=True
+DATABASE_URL=postgres://postgres:postgres@localhost/testdb
