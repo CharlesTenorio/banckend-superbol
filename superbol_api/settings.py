@@ -29,16 +29,18 @@ LIB_APPS = [
     'django_filters',
     ]
 
-JOGOS_APPS = [
-             'bancas',
-             'clientes',
-             'cambistas',
-             'apostas',
-             'configuracoes',
-             'jogos',
-             'times',
-             'ligas',
-             'home'
+JOGOS_APPS = [ 
+              'bancas',
+              'administradores',
+              'gerentes',
+              'clientes',
+              'cambistas',
+              'apostas',
+              'configuracoes',
+              'jogos',
+              'times',
+              'ligas',
+              'home'
             
             ]
 

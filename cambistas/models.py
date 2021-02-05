@@ -1,15 +1,13 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from bancas.models import Banca
+from gerentes.models import Gerente
 from django.conf import settings
 
 User = get_user_model()
 
 class Cambista(models.Model):
-    id_usuario = models.OneToOneField(
-        User, on_delete=models.PROTECT)
-    id_banca = models.ForeignKey(Banca, on_delete=models.PROTECT, null=True, blank=True)    
-
+    id_usuario = models.OneToOneField(User, on_delete=models.PROTECT)
+    id_gerente = models.ForeignKey(Gerente, on_delete=models.PROTECT)
     nome = models.CharField(max_length=80)
     cpf= models.CharField(max_length=20, unique=True)
     sexo = models.CharField(max_length=15)

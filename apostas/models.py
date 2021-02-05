@@ -8,7 +8,6 @@ import uuid
 
 class Aposta(models.Model):
     id_aposta = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    id_banca = models.ForeignKey(Banca, on_delete=models.PROTECT)
     id_cambista = models.ForeignKey(Cambista, blank=True, null=True, on_delete=models.SET_NULL)
     id_cliente= models.ForeignKey(Cliente, on_delete=models.SET_NULL, blank=True, null=True)
     nome = models.CharField(max_length=40)
