@@ -1,0 +1,5 @@
+SECRET_KEY=0xqj4aojsoqf+7el+7%cq4jyi-4dwiie&l6f@@1jh!5mnl95yf
+API_TOKEN=74409-ok98vsO3htGHPn
+BASE_URL_V1=https://api.b365api.com/v1/
+BASE_URL_V2=https://api.b365api.com/v2/
+DEBUG=True
