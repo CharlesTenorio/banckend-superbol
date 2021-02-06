@@ -41,6 +41,7 @@ JOGOS_APPS = [
               'times',
               'ligas',
               'home'
+              'financeiros',
             
             ]
 
@@ -137,6 +138,13 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
+
+STATUS_CONTA = (
+    ('Finalizado', 'Finalizado'),
+    ('Em aberto', 'Em aberto'),
+    ('Vencido', 'Vencido'),
+)
+
 
 SEXO_CHOICES = (
     ('Masculino', 'Masculino'),
