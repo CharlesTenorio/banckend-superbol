@@ -1,6 +1,4 @@
-from servicos.service import LerDadosAPI
 from unittest.mock import Mock
-
 
 def test_lista_times():
     time = Mock(return_valeu=200)
