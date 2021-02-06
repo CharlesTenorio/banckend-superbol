@@ -20,6 +20,7 @@ class ConasReceber(models.Model):
     valor_recebido = models.DecimalField(max_digits=9, decimal_places=2)
     valor_tota = models.DecimalField(max_digits=9, decimal_places=2)
     status_rebe = models.CharField(max_length=30, choices=settings.STATUS_CONTA)
+    comprovate = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.descricao
@@ -36,6 +37,7 @@ class ConasPagar(models.Model):
     valor_total = models.DecimalField(max_digits=9, decimal_places=2)
     valor_pago = models.DecimalField(max_digits=9, decimal_places=2)
     status_pg = models.CharField(max_length=30, choices=settings.STATUS_CONTA)
+    comprovate = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.descricao

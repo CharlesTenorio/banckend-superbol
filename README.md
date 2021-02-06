@@ -4,4 +4,5 @@ PostreSQL 12
 heroku
 travis
 
-[![Build Status](https://www.travis-ci.com/CharlesTenorio/banckend-superbol.svg?branch=main)](https://www.travis-ci.com/CharlesTenorio/banckend-superbol)
+
+[![Build Status](https://www.travis-ci.com/CharlesTenorio/banckend-superbol.svg?branch=master)](https://www.travis-ci.com/CharlesTenorio/banckend-superbol)
