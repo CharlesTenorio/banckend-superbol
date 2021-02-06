@@ -40,7 +40,7 @@ JOGOS_APPS = [
               'jogos',
               'times',
               'ligas',
-              'home'
+              'home',
               'financeiros',
             
             ]
