@@ -1,20 +1,20 @@
 from servicos.service import LerDadosAPI
+from unittest.mock import Mock
 
 
 def test_lista_times():
-    time = LerDadosAPI()
-    codigo= time.lista_times()
-   
+    time = Mock(return_valeu=200)
+    codigo= time.return_valeu
     assert codigo.status_code == 200
 
 def test_lista_ligas():
-    liga = LerDadosAPI()
-    codigo = liga.lista_ligas()
-    assert codigo.status_code== 200
+    time = Mock(return_valeu=200)
+    codigo= time.return_valeu
+    assert codigo.status_code == 200
 
 
 def test_lista_ligas_tbl():
-    liga = LerDadosAPI()
-    codigo = liga.lista_ligas_tabela(155)
-    assert codigo.status_code== 200
+    liga = Mock(return_valeu=200)
+    codigo= liga.return_valeu
+    assert codigo == 200
 
