@@ -16,18 +16,18 @@ class LerDadosAPI:
     def lista_times(self):
         url_time = self.url_base_v1+self.time+'?'+self.token+'&sport_id='+self.sport
         r = requests.get(url_time)
-        return r
+        return r.json()
 
     def lista_ligas(self):
         url_liga = self.url_base_v1+'league?'+self.token+'&sport_id='+self.sport
         r= requests.get(url_liga)
-        return r
+        return r.json()
 
     def lista_ligas_tabela(self, id_liga):
         # https://api.b365api.com/v2/league/table?token=74409-ok98vsO3htGHPn&league_id=155
         url_liga_tlb = self.url_base_v2+'league/table?'+self.token+'&league_id='+str(id_liga)
         r= requests.get(url_liga_tlb)
-        return r    
+        return r.json()    
     
     def lista_jogos(self, tipo_jogo, league_id):
         url_jogos = ''
@@ -45,7 +45,7 @@ class LerDadosAPI:
 
 
 @dataclass
-class PegarJogosFuturos:
+class PegarJogo:
     id_partida : int
     sport_id : int
     data_hora : datetime
@@ -58,7 +58,7 @@ class PegarJogosFuturos:
     
 
     @classmethod
-    def converte_dicionario(cls, data: dict) -> "PegarJogosFuturos":
+    def converte_dicionario(cls, data: dict) -> "PegarJogo":
         return cls(
             id_partida = results["id"],
             sport_id   = results["sport_id"],

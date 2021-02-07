@@ -16,3 +16,7 @@ def test_lista_ligas_tbl():
     codigo= liga.return_valeu
     assert codigo == 200
 
+def test_lista_jogos():
+    jogo = Mock(return_valeu=200)
+    codigo= jogo.return_valeu
+    assert codigo == 200
