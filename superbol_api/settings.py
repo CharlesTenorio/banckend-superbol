@@ -97,6 +97,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'superbol_api.wsgi.application'
 
 
+DEV = config('DEV', default=False, cast=bool)
+
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -244,4 +246,5 @@ STATICFILES_DIRS = [
 ]
 
 
-
+if DEV:
+    INSTALLED_APPS.append('django_extensions') 

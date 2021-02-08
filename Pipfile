@@ -16,11 +16,13 @@ gunicorn = "*"
 dj-database-url = "*"
 psycopg2 = "*"
 django-s3-folder-storage = "*"
+pandas = "*"
 
 [dev-packages]
 ipython = "*"
 pytest-cov = "*"
 codecov = "*"
+django-extensions = "*"
 
 [requires]
 python_version = "3.9"

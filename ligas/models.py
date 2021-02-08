@@ -3,8 +3,8 @@ from django.db import models
 class Liga(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
     nome= models.CharField(max_length=80)
-    cc=models.CharField(max_length=2)
-    has_leaguetable=models.IntegerField(),
+    cc=models.CharField(max_length=2, blank=True, null=True)
+    has_leaguetable=models.IntegerField()
     has_toplist=models.IntegerField()
 
     def __str__(self):

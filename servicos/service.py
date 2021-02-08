@@ -13,23 +13,23 @@ class LerDadosAPI:
     time : str = "team"
     sport: str = "1"# tutebol e 1
    
-    def lista_times(self):
+    def listar_times(self):
         url_time = self.url_base_v1+self.time+'?'+self.token+'&sport_id='+self.sport
         r = requests.get(url_time)
         return r.json()
 
-    def lista_ligas(self):
+    def listar_ligas(self):
         url_liga = self.url_base_v1+'league?'+self.token+'&sport_id='+self.sport
         r= requests.get(url_liga)
         return r.json()
 
-    def lista_ligas_tabela(self, id_liga):
+    def listar_ligas_tabela(self, id_liga):
        
         url_liga_tlb = self.url_base_v2+'league/table?'+self.token+'&league_id='+str(id_liga)
         r= requests.get(url_liga_tlb)
         return r.json()    
     
-    def lista_jogos(self, tipo_jogo, league_id):
+    def listar_jogos(self, tipo_jogo, league_id):
         url_jogos = ''
         if tipo_jogo == 'Marcado':
             url_jogos = self.url_base_v2+'events/upcoming?sport_id='+self.sport+'&league_id='+league_id+'&'+self.token
