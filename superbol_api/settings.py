@@ -28,6 +28,7 @@ LIB_APPS = [
     'rest_framework',
     'django_filters',
     'django_celery_results',
+    'django_celery_beat'
     ]
 
 JOGOS_APPS = [ 
@@ -249,11 +250,11 @@ STATICFILES_DIRS = [
 CELERY_RESULT_BACKEND = 'django-db'
 if DEV:
     INSTALLED_APPS.append('django_extensions') 
-    CELERY_BROKER_URL = 'redis://localhost:6379'
-    CELERY_BROKER_BACKEND = 'redis://localhost:6379'
+    CELERY_BROKER_URL = 'redis://localhost:6380'
+    CELERY_BROKER_BACKEND = 'redis://localhost:6380'
 else:
-    CELERY_BROKER_URL = 'redis://localhost:6379'
-    CELERY_BROKER_BACKEND = 'redis://localhost:6379'
+    CELERY_BROKER_URL = 'redis://localhost:6380'
+    CELERY_BROKER_BACKEND = 'redis://localhost:6380'
 
 
 
