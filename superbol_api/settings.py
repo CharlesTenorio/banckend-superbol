@@ -27,6 +27,7 @@ ALLOWED_HOSTS = ['*']
 LIB_APPS = [
     'rest_framework',
     'django_filters',
+    'django_celery_results',
     ]
 
 JOGOS_APPS = [ 
@@ -245,6 +246,17 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-
+CELERY_RESULT_BACKEND = 'django-db'
 if DEV:
     INSTALLED_APPS.append('django_extensions') 
+    CELERY_BROKER_URL = 'redis://localhost:6379'
+    CELERY_BROKER_BACKEND = 'redis://localhost:6379'
+else:
+    CELERY_BROKER_URL = 'redis://localhost:6379'
+    CELERY_BROKER_BACKEND = 'redis://localhost:6379'
+
+
+
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'

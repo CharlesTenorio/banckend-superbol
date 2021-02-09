@@ -31,3 +31,4 @@ class Aposta(models.Model):
 
     
 # Create your models here.
+        

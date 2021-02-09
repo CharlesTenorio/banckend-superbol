@@ -4,7 +4,6 @@ from ligas.models import Liga
 from .models import jogo
 import pandas as pd
 
-
 #TODO TERMINAR AMANHA COM PANSDA
 def incluir_ligas():
     salvar = False
@@ -30,7 +29,6 @@ def incluir_ligas():
         salvar=False
     return salvar    
 
-    
 def incluir_jogos_novos():
     jogos = LerDadosAPI()
     lista_liga = Liga.objects.all()
@@ -49,13 +47,16 @@ def incluir_jogos_novos():
                                  "time_visitante": i["away"]["name"],
                                  "id_liga": i["league"]["id"],
                                  "liga": i["league"]["name"],
-                                 "cc": i["cc"],
+                                 "cc": i["league"]["cc"],
                                  "ss": i["ss"],
                                  "data_partida": i["time"],
-                                 "cc": i["cc"],
+                                 "cc": i["league"]["cc"],
                                  "qtd_gol_casa": 0,
                                  "qtd_gol_visitante": 0,
-                                 "realizada": False })  
+                                 "realizada": False }, ignore_index=True)
+                
+                     
+                    
 
     return df                         
-             
+

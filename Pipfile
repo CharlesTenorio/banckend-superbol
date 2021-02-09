@@ -17,6 +17,9 @@ dj-database-url = "*"
 psycopg2 = "*"
 django-s3-folder-storage = "*"
 pandas = "*"
+celery = "*"
+django-celery-results = "*"
+redis = "*"
 
 [dev-packages]
 ipython = "*"
