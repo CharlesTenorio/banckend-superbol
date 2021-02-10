@@ -21,6 +21,7 @@ celery = "*"
 django-celery-results = "*"
 redis = "*"
 django-celery-beat = "*"
+numpy = "*"
 
 [dev-packages]
 ipython = "*"
