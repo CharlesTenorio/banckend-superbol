@@ -4,7 +4,16 @@ from ligas.models import Liga
 from .models import jogo
 import pandas as pd
 
-#TODO TERMINAR AMANHA COM PANSDA
+
+
+def timestamp_pra_datetime(data_timestamp):
+    dt_object = datetime.fromtimestamp(data_timestamp)
+    
+    #data_txt = dt_object.strftime('%d/%m/%Y %H:%M:%s')
+    #data_correta = datetime.strptime(data_txt, '%d/%m/%Y %H:%M')
+    return dt_object
+
+
 def incluir_ligas():
     salvar = False
     try:
@@ -49,7 +58,7 @@ def incluir_jogos_novos():
                                  "liga": i["league"]["name"],
                                  "cc": i["league"]["cc"],
                                  "ss": i["ss"],
-                                 "data_partida": i["time"],
+                                 "data_partida": timestamp_pra_datetimei(["time"]),
                                  "cc": i["league"]["cc"],
                                  "qtd_gol_casa": 0,
                                  "qtd_gol_visitante": 0,
