@@ -1,18 +1,20 @@
 from servicos.service import LerDadosAPI
 from datetime import datetime
 from ligas.models import Liga
-from .models import jogo
-import pandas as pd
+from .models import Jogo
 
 
 
 def timestamp_pra_datetime(data_timestamp):
     dt_object = datetime.fromtimestamp(data_timestamp)
+    data_text= dt_object.strftime("%d/%m/%Y %H:%M:%S")
+    data_e_hora = datetime.strptime(data_text, '%d/%m/%Y %H:%M:%S')
     
     #data_txt = dt_object.strftime('%d/%m/%Y %H:%M:%s')
     #data_correta = datetime.strptime(data_txt, '%d/%m/%Y %H:%M')
-    return dt_object
+    return data_e_hora
 
+    
 
 def incluir_ligas():
     salvar = False
@@ -38,34 +40,45 @@ def incluir_ligas():
         salvar=False
     return salvar    
 
+
+
+
+
 def incluir_jogos_novos():
+
     jogos = LerDadosAPI()
     lista_liga = Liga.objects.all()
-    df = pd.DataFrame(columns=['id_partida', 'id_time_casa', 'time_casa', 'id_time_visitante', 'time_visitante', 'id_liga',
-                              'liga', 'cc', 'ss', 'data_partida', 'qtd_gol_casa', 'qtd_gol_visitante', 'realizada'] )  
-    
-    for liga in lista_liga:
-         result = jogos.listar_jogos('Novos', str(liga.id))
-         if result:
-
-             for i  in result['results']:
-                 df = df.append({"id_partida": i["id"],
-                                 "id_time_casa": i["home"]["id"],
-                                 "time_casa": i["home"]["name"],
-                                 "id_time_visitante": i["away"]["id"],
-                                 "time_visitante": i["away"]["name"],
-                                 "id_liga": i["league"]["id"],
-                                 "liga": i["league"]["name"],
-                                 "cc": i["league"]["cc"],
-                                 "ss": i["ss"],
-                                 "data_partida": timestamp_pra_datetimei(["time"]),
-                                 "cc": i["league"]["cc"],
-                                 "qtd_gol_casa": 0,
-                                 "qtd_gol_visitante": 0,
-                                 "realizada": False }, ignore_index=True)
-                
+    salva = False
+   
+   
+    try:
+        
+          for liga in lista_liga:
+             result = jogos.listar_jogos('Novos', liga.id)
+             if result:
+               
+                     for i  in result['results']:
+                        
+                        jg = Jogo(id_partida = i["id"],
+                                id_time_casa = i["home"]["id"],
+                                time_casa = i["home"]["name"],
+                                id_time_visitante = i["away"]["id"],
+                                time_visitante = i["away"]["name"],
+                                id_liga = i["league"]["id"],
+                                liga = i["league"]["name"],
+                                cc = i["league"]["cc"],
+                                ss = i["ss"],
+                                data_partida = i["time"],
+                                qtd_gol_casa = 0,
+                                qtd_gol_visitante = 0,
+                                realizada = False)
+                        jg.salve()
+                        salve = True
+    except Exception as e:
+        print(srt(e))
+        
                      
                     
 
-    return df                         
+    return salva                         
 

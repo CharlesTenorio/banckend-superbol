@@ -1,7 +1,6 @@
 from celery import shared_task
 from .servicos import incluir_jogos_novos, incluir_ligas
-import pandas as pd
-from .models import jogo
+from .models import Jogo
 
 
 

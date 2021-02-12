@@ -31,7 +31,7 @@ class LerDadosAPI:
     
     def listar_jogos(self, tipo_jogo, league_id):
         url_jogos = ''
-        if tipo_jogo == 'Marcado':
+        if tipo_jogo == 'Novos':
             url_jogos = self.url_base_v2+'events/upcoming?sport_id='+self.sport+'&league_id='+league_id+'&'+self.token
            
         else:
@@ -39,4 +39,5 @@ class LerDadosAPI:
 
         r= requests.get(url_jogos)
         return r.json()      
-                
+
+             

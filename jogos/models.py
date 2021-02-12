@@ -2,7 +2,7 @@ from django.db import models
 from times.models import Time
 from ligas.models import Liga
 
-class jogo(models.Model):
+class Jogo(models.Model):
     id_partida = models.BigIntegerField(unique=True)
     id_time_casa = models.ForeignKey(Time, on_delete=models.PROTECT, related_name='casa')
     time_casa = models.CharField(max_length=80)
