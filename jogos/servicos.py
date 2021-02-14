@@ -2,7 +2,7 @@ from servicos.service import LerDadosAPI
 from datetime import datetime
 from ligas.models import Liga
 from .models import Jogo
-
+from dataclasses import dataclass
 
 
 def timestamp_pra_datetime(data_timestamp):
@@ -16,66 +16,77 @@ def timestamp_pra_datetime(data_timestamp):
 
     
 
-def incluir_ligas():
-    salvar = False
-    try:
-        
-      qtd_ligas = Liga.objects.count()
-      if qtd_ligas <= 0:
-        obj_ligas = LerDadosAPI()
-        ligas = obj_ligas.listar_ligas()
-        if ligas:
-            for liga in ligas["results"]:
-                lg = Liga(id=liga['id'],
-                     nome=liga['name'],
-                     cc=liga['cc'],
-                     has_leaguetable=liga["has_leaguetable"],
-                     has_toplist=liga["has_toplist"])
-                     
 
-                lg.save() 
-                salvar=True         
-    except Exception as e:
-        print(str(e))
-        salvar=False
-    return salvar    
+@dataclass
+class MontarJogos:
+    id_partida: int
+    id_time_casa: int
+    time_casa:str
+    id_time_visitante: int
+    time_visitante: str
+    id_liga: int
+    liga: str
+    cc: str
+    ss: str
+    data_partida: int
+    qtd_gol_casa: int
+    qtd_gol_visitante: int
+    realizada : bool
 
-
-
-
+    
 
 def incluir_jogos_novos():
 
     jogos = LerDadosAPI()
     lista_liga = Liga.objects.all()
     salva = False
-   
-   
+    data_jogo=None 
+     
     try:
         
           for liga in lista_liga:
-             result = jogos.listar_jogos('Novos', liga.id)
+             result = jogos.listar_jogos('Novos', 155)
+             
              if result:
+                
                
                      for i  in result['results']:
+             
+                        p = MontarJogos(i["id"],
+                                       i["home"]["id"],
+                                       i["home"]["name"],
+                                       i["away"]["id"],
+                                       i["away"]["name"],
+                                       i["league"]["id"],
+                                       i["league"]["name"],
+                                       i["league"]["cc"],  
+                                       i["ss"],
+                                       i["time"],
+                                       0,
+                                       0,
+                                       False)
+
+                        data_jogo=timestamp_pra_datetime(p.data_partida)             
                         
-                        jg = Jogo(id_partida = i["id"],
-                                id_time_casa = i["home"]["id"],
-                                time_casa = i["home"]["name"],
-                                id_time_visitante = i["away"]["id"],
-                                time_visitante = i["away"]["name"],
-                                id_liga = i["league"]["id"],
-                                liga = i["league"]["name"],
-                                cc = i["league"]["cc"],
-                                ss = i["ss"],
-                                data_partida = i["time"],
-                                qtd_gol_casa = 0,
-                                qtd_gol_visitante = 0,
-                                realizada = False)
-                        jg.salve()
-                        salve = True
+                        jg =     Jogo(id_partida=p.id_partida,
+                                      id_time_casa=p.id_time_casa,
+                                      time_casa=p.time_casa,
+                                      id_time_visitante=p.id_time_visitante,
+                                      time_visitante=p.time_visitante,
+                                      id_liga=p.id_liga,
+                                      liga=p.liga,
+                                      cc=p.cc,
+                                      ss=p.ss,
+                                      data_partida=data_jogo,
+                                      qtd_gol_casa=p.qtd_gol_casa,
+                                      qtd_gol_visitante=p.qtd_gol_visitante,
+                                      realizada=p.realizada)
+                        jg.save()           
+
+                        
+                     print(partida)        
     except Exception as e:
-        print(srt(e))
+        print(str(e))
         
                      
                     

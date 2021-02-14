@@ -4,7 +4,7 @@ class Time(models.Model):
     id_time = models.IntegerField(primary_key=True)
     nome_time = models.CharField(max_length=80, null=False, blank=False, unique=True)
     cc = models.CharField(max_length=2, blank=True, null=True)
-    id_img = models.IntegerField()
+    image_id = models.IntegerField(null=False, blank=False, default=0)
     data_cad= models.DateTimeField(auto_now=True)
     
     def __str__(self):

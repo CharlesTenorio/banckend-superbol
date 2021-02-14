@@ -15,7 +15,8 @@ class LerDadosAPI:
    
     def listar_times(self):
         url_time = self.url_base_v1+self.time+'?'+self.token+'&sport_id='+self.sport
-        r = requests.get(url_time)
+        r = requests.get(url_time).json()
+        r = requests.get(url_time+'/?per_page=500')
         return r.json()
 
     def listar_ligas(self):
@@ -32,10 +33,10 @@ class LerDadosAPI:
     def listar_jogos(self, tipo_jogo, league_id):
         url_jogos = ''
         if tipo_jogo == 'Novos':
-            url_jogos = self.url_base_v2+'events/upcoming?sport_id='+self.sport+'&league_id='+league_id+'&'+self.token
+            url_jogos = self.url_base_v2+'events/upcoming?sport_id='+str(self.sport)+'&league_id='+str(league_id)+'&'+self.token
            
         else:
-            url_jogos=self.url_base_v2+'events/ended?sport_id='+self.sport+'&league_id='+league_id+'&'+self.token
+            url_jogos=self.url_base_v2+'events/ended?sport_id='+self.sport+'&league_id='+str(league_id)+'&'+self.token
 
         r= requests.get(url_jogos)
         return r.json()      
