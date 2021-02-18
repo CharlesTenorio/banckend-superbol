@@ -20,6 +20,7 @@ celery = "*"
 django-celery-results = "*"
 redis = "*"
 django-celery-beat = "*"
+requests-paginator = "*"
 
 [dev-packages]
 ipython = "*"
