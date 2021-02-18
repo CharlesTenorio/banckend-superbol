@@ -104,8 +104,21 @@ DEV = config('DEV', default=False, cast=bool)
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db14.sqlite3')
-DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
+#default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db14.sqlite3')
+if DEV:
+    DATABASES = {
+    'default': {
+        #'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME', default='apostadb'),
+        'USER': config('DB_USER', default='postgres'),
+        'PASSWORD': config('DB_PW', default='linux123'),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='5432'),
+     }
+ }
+else:
+    DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
             
 
 
