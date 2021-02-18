@@ -263,11 +263,11 @@ STATICFILES_DIRS = [
 CELERY_RESULT_BACKEND = 'django-db'
 if DEV:
     INSTALLED_APPS.append('django_extensions') 
-    CELERY_BROKER_URL = 'redis://localhost:6380'
-    CELERY_BROKER_BACKEND = 'redis://localhost:6380'
+    CELERY_BROKER_URL = config('REDIS_SERVER')#'redis://localhost:6380'
+    CELERY_BROKER_BACKEND = config('REDIS_SERVER')#'redis://localhost:6380'
 else:
-    CELERY_BROKER_URL = 'redis://localhost:6380'
-    CELERY_BROKER_BACKEND = 'redis://localhost:6380'
+    CELERY_BROKER_URL = config('REDIS_SERVER')
+    CELERY_BROKER_BACKEND =config('REDIS_SERVER') 
 
 
 
