@@ -7,6 +7,7 @@ import json
 
 token = config("API_TOKEN")
 
+
 urls={
         "times": "https://api.b365api.com/v1/team?token="+token+"&sport_id=1&page=",
         "ligas": "https://api.b365api.com/v1/league?token="+token+"&sport_id=1&page=",
@@ -53,10 +54,10 @@ class LerDadosAPI:
     def listar_jogos(self, tipo_jogo, league_id, pagina):
         url_jogos = ''
         if tipo_jogo == 'Novos':
-            url_jogos = self.url_base_v2+'events/upcoming?sport_id='+str(self.sport)+'&league_id='+str(league_id)+'&'+self.token+'&page='+str(pagina)
+            url_jogos = 'https://api.b365api.com/v2/events/upcoming?sport_id=1&league_id='+str(league_id)+'&token='+token+'&page='+str(pagina)
            
         else:
-            url_jogos=self.url_base_v2+'events/ended?sport_id='+self.sport+'&league_id='+str(league_id)+'&'+self.token+'&page='+str(pagina)
+            url_jogos='https://api.b365api.com/v2/events/ended?sport_id=1&league_id='+str(league_id)+'&token='+token+'&page='+str(pagina)
 
         r= requests.get(url_jogos)
         return r.json()      
