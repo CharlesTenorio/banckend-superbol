@@ -104,7 +104,7 @@ DEV = config('DEV', default=False, cast=bool)
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-#default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db14.sqlite3')
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db14.sqlite3')
 if DEV:
     DATABASES = {
     'default': {
