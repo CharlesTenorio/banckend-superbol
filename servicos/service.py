@@ -29,13 +29,12 @@ class LerDadosAPI:
         num_pagina = total_registro/num_pg
         return num_pagina
 
-
-    
     
     def listar_times(self, pagina):
        
         url_time = urls["times"]+str(pagina)
         r = requests.get(url_time)
+        #timesbr = [ x for x in times['results'] if x['cc'] == 'br' ]
         return r.json()
 
     

@@ -3,3 +3,4 @@ BASE_URL_V1=https://api.b365api.com/v1/
 BASE_URL_V2=https://api.b365api.com/v2/
 DEBUG=True
 REDIS_SERVER=redis://:euW0dIhqITXRkFqqJdzzO5cFqj6Ed4J7@redis-12700.c8.us-east-1-2.ec2.cloud.redislabs.com:12700/0
+REDIS_LOCAL=redis://localhost:6380
