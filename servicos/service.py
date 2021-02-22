@@ -13,7 +13,8 @@ urls={
         "ligas": "https://api.b365api.com/v1/league?token="+token+"&sport_id=1&page=",
         "upcoming_events" : "https://api.b365api.com/v2/events/upcoming?sport_id=1&token="+token, 
         "ended_events" : "https://api.b365api.com/v2/events/ended?sport_id=1&token="+token,
-        "envents_odds_summarys" :"https://api.b365api.com/v2/event/odds/summary?token="+token+"&event_id="
+        "envents_odds_summarys" :"https://api.b365api.com/v2/event/odds/summary?token="+token+"&event_id=",
+        "events_search": "https://api.b365api.com/v1/events/search?token="+token+"&sport_id=1&home="
      }
    
 
@@ -28,7 +29,7 @@ class LerDadosAPI:
         num_pg = int(r['pager']['per_page'])
         num_pagina = total_registro/num_pg
         return num_pagina
-
+    
     
     def listar_times(self, pagina):
        
@@ -60,7 +61,15 @@ class LerDadosAPI:
 
         r= requests.get(url_jogos)
         return r.json()      
+     
+    def procurar_jogo(self, time_casa, time_visitante, data_jogo):
+        ''' data do jogo e convertido pra timestamp'''
+        timestamp = datetime.timestamp(data_jogo)
+        dt = int(timestamp)
+        url_jogo = urls["events_search"]+time_casa+"&away="+time_visitante+"&time="+str(dt)
+        print(url_jogo)
+        r = requests.get(url_jogo)
+        return r.json()
 
-   
 
 
