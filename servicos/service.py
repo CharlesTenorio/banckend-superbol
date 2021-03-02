@@ -3,7 +3,7 @@ import requests
 from decouple import config
 from datetime import datetime
 import json
-
+from typing import Dict
 
 token = config("API_TOKEN")
 
@@ -12,9 +12,12 @@ urls={
         "times": "https://api.b365api.com/v1/team?token="+token+"&sport_id=1&page=",
         "ligas": "https://api.b365api.com/v1/league?token="+token+"&sport_id=1&page=",
         "upcoming_events" : "https://api.b365api.com/v2/events/upcoming?sport_id=1&token="+token, 
+        "event_view":"https://api.b365api.com/v1/event/view?token="+token+"&event_id=",
         "ended_events" : "https://api.b365api.com/v2/events/ended?sport_id=1&token="+token,
         "envents_odds_summarys" :"https://api.b365api.com/v2/event/odds/summary?token="+token+"&event_id=",
-        "events_search": "https://api.b365api.com/v1/events/search?token="+token+"&sport_id=1&home="
+        "events_search": "https://api.b365api.com/v1/events/search?token="+token+"&sport_id=1&home=",
+        "odds":"https://api.b365api.com/v2/event/odds?token="+token+"&event_id="
+
      }
    
 
@@ -71,5 +74,9 @@ class LerDadosAPI:
         r = requests.get(url_jogo)
         return r.json()
 
-
+    def listar_eventos(self, id_liga):
+        url_liga_tlb = self.url_base_v2+'league/table?'+self.token+'&league_id='+str(id_liga)
+        r= requests.get(url_liga_tlb)
+        return r.json()    
+   
 

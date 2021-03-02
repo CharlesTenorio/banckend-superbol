@@ -26,13 +26,16 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 LIB_APPS = [
     'rest_framework',
+    'rest_framework.authtoken',
     'django_filters',
     'django_celery_results',
-    'django_celery_beat'
+    'django_celery_beat', 
+    'drf_yasg2',
     ]
 
 JOGOS_APPS = [ 
-              'bancas',
+              'usuarios',
+              'bancas', 
               'administradores',
               'gerentes',
               'clientes',
@@ -216,7 +219,7 @@ ESTADOS_CHOICES = (
 )
 
 
-
+AUTH_USER_MODEL ='usuarios.User'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -274,3 +277,14 @@ else:
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+     )
+
+}

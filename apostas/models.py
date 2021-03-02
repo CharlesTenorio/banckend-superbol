@@ -2,6 +2,7 @@ from django.db import models
 from cambistas.models import Cambista
 from bancas.models import Banca
 from clientes.models import Cliente
+from jogos.models import Jogo
 from django.conf import settings
 import uuid
 
@@ -31,4 +32,7 @@ class Aposta(models.Model):
 
     
 # Create your models here.
+class DetalheAposta(models.Model):
+        id_aposta=models.ForeignKey(Aposta, on_delete=models.PROTECT, related_name='det_aposta')
+        id_jogo = models.ForeignKey(Jogo, on_delete=models.PROTECT)
         

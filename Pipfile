@@ -21,6 +21,10 @@ django-celery-results = "*"
 redis = "*"
 django-celery-beat = "*"
 requests-paginator = "*"
+install = "*"
+django-rest-auth = "*"
+djangorestframework-simplejwt = "*"
+drf-yasg2 = "*"
 
 [dev-packages]
 ipython = "*"

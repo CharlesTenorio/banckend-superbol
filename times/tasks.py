@@ -15,7 +15,7 @@ def incluir_times():
         obj_times = LerDadosAPI()
         t = urls["times"]+"1"
         qtd_pg = int(obj_times.qtd_paginas_registros(t))
-        for i in range(qtd_pg):
+        for i in range(502):
             times = obj_times.listar_times(i)
             if times:
               for t in times["results"]:
