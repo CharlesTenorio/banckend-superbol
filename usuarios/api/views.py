@@ -8,8 +8,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import get_user_model
-from consultores.models import Consultor
-from clientes.models import Cliente
+
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -43,50 +42,6 @@ class CustomAuthToken(ObtainAuthToken):
             'email': user.email,
             'name': user.get_full_name()
         })
-
-class CustomAuthTokenConsultor(ObtainAuthToken):
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data,
-                                           context={'request': request})
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        token, created = Token.objects.get_or_create(user=user)
-        cli = Consultor.objects.filter(id_usuario=user.pk).first()
-        if cli:
-            return Response({
-               'token': token.key,
-               'user_id': user.pk,
-               'email': user.email,
-               'name': user.get_full_name(),
-               'id_consutor': cli.id
-              })
-        else:
-            return Response({"msg":'consultor nao encontrado'}, status=404)
-
-
-
-class CustomAuthTokenCliente(ObtainAuthToken):
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data,
-                                           context={'request': request})
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        token, created = Token.objects.get_or_create(user=user)
-        cli = Cliente.objects.filter(id_usuario=user.pk).first()
-        if cli:
-            return Response({
-               'token': token.key,
-               'user_id': user.pk,
-               'email': user.email,
-               'name': user.get_full_name(),
-               'id_cliente': cli.id
-              })
-        else:
-            return Response({"msg":'cliente nao encontrado'}, status=404)
-
-
 
 
 
