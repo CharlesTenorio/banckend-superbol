@@ -291,6 +291,6 @@ REST_FRAMEWORK = {
 
 STATUS_COTACAO = (
      ('Casa', 'Casa'),
-    ('Fora', 'Fora'),
-    ('Empate', 'Empate'),
+     ('Fora', 'Fora'),
+     ('Empate', 'Empate'),
 )

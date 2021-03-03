@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
+from usuarios.api.views import registra_view
 from times.views import get_times
 from ligas.views import get_ligas
 from administradores.api.viewsets import AdministradorViewSet
@@ -65,6 +66,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('get_times/', get_times, name='get_times'),
     path('get_ligas/', get_ligas, name='get_ligas'),
+     path('api/usr/registra_usr', registra_view, name='registrar'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
