@@ -2,8 +2,6 @@ from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
 from rest_framework.viewsets import ModelViewSet
 from clientes.models import Cliente, Conta, HistorioConta
-
-
 from .serializers import ClienteSerializer, ContaSerializer, HistoricoContaSerializer
 from django.contrib.auth import get_user_model
 

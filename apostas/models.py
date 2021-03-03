@@ -35,4 +35,11 @@ class Aposta(models.Model):
 class DetalheAposta(models.Model):
         id_aposta=models.ForeignKey(Aposta, on_delete=models.PROTECT, related_name='det_aposta')
         id_jogo = models.ForeignKey(Jogo, on_delete=models.PROTECT)
+        liga = models.CharField(max_length=40)
+        time_casa = models.CharField(max_length=40)
+        time_visitante=models.CharField(max_length=40)
+        status = models.CharField(max_length=40, default='Aberta')
+        cotacao = models.DecimalField(max_digits=9, decimal_places=2, default=0)
+        status_cotacao = models.CharField(max_length=40, choices=settings.STATUS_COTACAO)
+
         

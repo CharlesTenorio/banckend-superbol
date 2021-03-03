@@ -13,6 +13,11 @@ from gerentes.api.viewsets import GerenteViewSet
 from financeiros.api.viewsets import PlanoViewSet
 from financeiros.api.viewsets import ContaRecebeViewSet
 from financeiros.api.viewsets import ContaPgViewSet
+from times.api.viewsets import TimeViewSet, RiscoViewSet
+from ligas.api.viewsets import LigaViewSet
+from jogos.api.viewsets import JogoViewSet
+from apostas.api.viewsets import ApostaViewSet
+from apostas.api.viewsets import DetalheApostaViewSet
 from drf_yasg2.views import get_schema_view
 from drf_yasg2 import openapi
 from rest_framework import permissions
@@ -47,9 +52,12 @@ router.register(r'api/cliente', ClienteViewSet)
 router.register(r'api/plano', PlanoViewSet)
 router.register(r'api/contaspg', ContaPgViewSet)
 router.register(r'api/contasreceber', ContaRecebeViewSet)
-
-
-
+router.register(r'api/time', TimeViewSet)
+router.register(r'api/liga', LigaViewSet)
+router.register(r'api/risco', RiscoViewSet)
+router.register(r'api/jogos', JogoViewSet)
+router.register(r'api/aposta', ApostaViewSet)
+router.register(r'api/detaposta', DetalheApostaViewSet)
 
 
 urlpatterns = [
