@@ -31,6 +31,7 @@ LIB_APPS = [
     'django_celery_results',
     'django_celery_beat', 
     'drf_yasg2',
+    'corsheaders',
     ]
 
 JOGOS_APPS = [ 
@@ -74,6 +75,7 @@ X_FRAME_OPTIONS='SAMEORIGIN'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -294,3 +296,4 @@ STATUS_COTACAO = (
      ('Fora', 'Fora'),
      ('Empate', 'Empate'),
 )
+CORS_ORIGIN_ALLOW_ALL = True

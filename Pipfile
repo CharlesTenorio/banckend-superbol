@@ -25,6 +25,7 @@ install = "*"
 django-rest-auth = "*"
 djangorestframework-simplejwt = "*"
 drf-yasg2 = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 ipython = "*"
