@@ -4,6 +4,8 @@ from rest_framework.fields import SerializerMethodField
 from clientes.models import Cliente, Conta, HistorioConta
 
 
+
+
 class ClienteSerializer(ModelSerializer):
 
     class Meta:

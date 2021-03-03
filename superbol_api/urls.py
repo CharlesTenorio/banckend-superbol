@@ -10,6 +10,9 @@ from cambistas.api.viewsets import CambistaViewSet
 from configuracoes.api.viewsets import ConfigViewSet
 from clientes.api.viewsets import ClienteViewSet
 from gerentes.api.viewsets import GerenteViewSet
+from financeiros.api.viewsets import PlanoViewSet
+from financeiros.api.viewsets import ContaRecebeViewSet
+from financeiros.api.viewsets import ContaPgViewSet
 from drf_yasg2.views import get_schema_view
 from drf_yasg2 import openapi
 from rest_framework import permissions
@@ -41,6 +44,10 @@ router.register(r'api/banca', BancaViewSet)
 router.register(r'api/cambista', CambistaViewSet)
 router.register(r'api/config', ConfigViewSet)
 router.register(r'api/cliente', ClienteViewSet)
+router.register(r'api/plano', PlanoViewSet)
+router.register(r'api/contaspg', ContaPgViewSet)
+router.register(r'api/contasreceber', ContaRecebeViewSet)
+
 
 
 

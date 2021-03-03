@@ -10,7 +10,7 @@ class PlanoContas(models.Model):
 
 
 
-class ConasReceber(models.Model):
+class ContasReceber(models.Model):
     id_banca = models.ForeignKey(Banca, on_delete=models.PROTECT)
     id_plano = models.ForeignKey(PlanoContas, on_delete=models.PROTECT)
     descricao = models.CharField(max_length=40)
@@ -26,7 +26,7 @@ class ConasReceber(models.Model):
         return self.descricao
 
 
-class ConasPagar(models.Model):
+class ContasPagar(models.Model):
     id_plano = models.ForeignKey(PlanoContas, on_delete=models.PROTECT)
     id_banca = models.ForeignKey(Banca, on_delete=models.PROTECT)
     descricao = models.CharField(max_length=40)

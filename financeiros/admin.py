@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PlanoContas, ConasPagar, ConasReceber
+from .models import PlanoContas, ContasPagar, ContasReceber
 
 class PlanoAdmin(admin.ModelAdmin):
     list_display = ('id', 'plano_conta')
@@ -17,9 +17,9 @@ class ContasRecebAdmin(admin.ModelAdmin):
 
 admin.site.register(PlanoContas, PlanoAdmin)
 
-admin.site.register(ConasPagar, CotasPgAdmin)
+admin.site.register(ContasPagar, CotasPgAdmin)
 
-admin.site.register(ConasReceber, ContasRecebAdmin)
+admin.site.register(ContasReceber, ContasRecebAdmin)
 
 
 
