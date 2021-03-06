@@ -24,13 +24,14 @@ def incluir_times():
                       code_img=0
                   else:
                       code_img= t["image_id"]    
-
-                  time = Time(id_time=t["id"],
+                  
+                  if t['cc']=="br":
+                      time = Time(id_time=t["id"],
                             nome_time=t["name"],
                             cc=t["cc"], 
                             image_id=code_img)
 
-                  time.save() 
+                      time.save() 
             
         salvar=True         
     except Exception as e:
